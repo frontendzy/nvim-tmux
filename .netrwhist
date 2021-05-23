@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/zy/Desktop/code/node/buffer/buffer的使用'
+let g:netrw_dirhist_7='/Users/zy/Desktop/code/node/npm_cli/lib/core'
+let g:netrw_dirhist_6='/Users/zy/Desktop/code/node/npm_cli/lib'
+let g:netrw_dirhist_5='/Users/zy/.config/nvim/plugged/material.vim'
+let g:netrw_dirhist_4='/Users/zy/.config/nvim/plugged/material.vim/colors'
+let g:netrw_dirhist_3='/Users/zy/.config/nvim/plugged/material.vim'
+let g:netrw_dirhist_2='/Users/zy/.config/nvim/plugged/material.vim/colors'
+let g:netrw_dirhist_1='/Users/zy/.config/nvim/plugged/material.vim'
