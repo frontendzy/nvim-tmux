@@ -31,7 +31,6 @@ set guicursor=i:hor100-ncvCursor
 if has("autocmd")  
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif  
 endif 
-
 " 快捷键设置
 nmap <C-t> :NERDTreeToggle<CR>
 map <space>v "+p<CR>
@@ -63,32 +62,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'voldikss/vim-translator'
 " Plug 'junegunn/fzf.vim'
 call plug#end()
-
+" 背景透明
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 " 主题设置
 colorscheme material
 
 " emmet配置
-" 主题设置
-colorscheme material
-" 主题设置
-colorscheme material
 let g:user_emmet_install_global = 0 " 取消全局作用
 autocmd FileType html,css,js,vue,jsx EmmetInstall " 仅对前端的几个类型的文件起作用
 let g:user_emmet_leader_key='<C-Y>' " emmet的热键
 
-" 深浅色主题切换
-" if strftime("%h") < 12
-"   let g:material_theme_style = 'lighter'
-" 	set background=light
-" else
-" 	let g:material_theme_style = 'default'
-" 	set background=dark
-" endif
-	let g:material_theme_style = 'default'
+let g:material_theme_style = 'default'
 
 " tab 标线设置
-" let g:indentLine_color_term = 243 " 对齐线的颜色
-" let g:indentLine_char = '┊' " 用字符串代替默认的标示线
+ let g:indentLine_color_term = 243 " 对齐线的颜色
+ let g:indentLine_char = '┊' " 用字符串代替默认的标示线
 
 
 " 热键 + m 打开markdown文件预览
@@ -156,8 +144,6 @@ nmap <Leader>m :TranslateWV<CR>
 let loaded_matchparen=1
 " 光标样式
 highlight iCursor guifg=red guibg=steelblue
-" set guicursor=i:block-iCursor-blinkon0,v:block-vCursor
-" set gcr=n-v-c:ver25-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor
 
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -165,6 +151,18 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
-
-
-
+" 自动添加文件头
+autocmd BufNewFile *.js,*.md exec ":call SetComment()"
+func SetComment()
+        call setline(1,"/*================================================================")
+        call append(line("."),   "*   Copyright (C) ".strftime("%Y")." IEucd Inc. All rights reserved.")
+        call append(line(".")+1, "*   ")
+        call append(line(".")+2, "*   文件名称：".expand("%:t"))
+        call append(line(".")+3, "*   创 建 者：ZY")
+        call append(line(".")+4, "*   创建日期：".strftime("%Y年%m月%d日"))
+        call append(line(".")+5, "*   描    述：")
+        call append(line(".")+6, "*")
+        call append(line(".")+7, "================================================================*/")
+        call append(line(".")+8, "")
+        call append(line(".")+9, "")
+endfunc
