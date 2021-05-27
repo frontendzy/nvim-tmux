@@ -113,7 +113,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_colorful_config = 1
 
 " coc
-let g:coc_global_extensions = ['coc-json', 'coc-html']
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
 
 " ctrl + b 跳转到函数，并在新的tab页面中打开
 nmap <silent> <C-b> :call CocAction('jumpDefinition', 'tab drop')<CR>
