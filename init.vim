@@ -72,7 +72,8 @@ let g:user_emmet_install_global = 0 " 取消全局作用
 autocmd FileType html,css,js,vue,jsx EmmetInstall " 仅对前端的几个类型的文件起作用
 let g:user_emmet_leader_key='<C-Y>' " emmet的热键
 
-let g:material_theme_style = 'default'
+" let g:material_theme_style = 'default'
+let g:material_theme_style = 'light'
 
 " tab 标线设置
  let g:indentLine_color_term = 243 " 对齐线的颜色
@@ -80,7 +81,15 @@ let g:material_theme_style = 'default'
 
 
 " 热键 + m 打开markdown文件预览
-autocmd Filetype markdown map <LEADER>m :MarkdownPreview <CR>
+let g:mkdp_auto_start = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_browser = 'google-chrome-stable'
+let g:mkdp_echo_preview_url = 1
+
+nmap <C-s> <Plug>MarkdownPreview
+
+
+
 
 " 彩色括号
 let g:rbpt_colorpairs = [
@@ -152,7 +161,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
 " 自动添加文件头
-autocmd BufNewFile *.js,*.md exec ":call SetComment()"
+autocmd BufNewFile *.js exec ":call SetComment()"
 func SetComment()
         call setline(1,"/*================================================================")
         call append(line("."),   "*   Copyright (C) ".strftime("%Y")." IEucd Inc. All rights reserved.")
